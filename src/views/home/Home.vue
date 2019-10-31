@@ -12,6 +12,15 @@
     <AdBanner></AdBanner>
     <Seckill></Seckill>
   </div>
+
+  <div v-if='cateAdData && cateAdData.length > 0'>
+    <CateAd type="1" :item='cateAdData[0]'></CateAd>
+    <CateAd type="1" :item='cateAdData[1]'></CateAd>
+
+    <CateAd type="2" :item='cateAdData[2]'></CateAd>
+    <CateAd type="2" :item='cateAdData[3]'></CateAd>
+  </div>
+
 </div>
 </template>
 
@@ -22,7 +31,9 @@ import Swiper from './Swiper.vue'
 import Cates from './Cates.vue'
 import AdBanner from './AdBanner.vue'
 import Seckill from './Seckill.vue'
+import CateAd from './CateAd.vue'
 
+import { mapActions, mapState } from 'vuex'
 export default {
   components: {
     NavBar,
@@ -30,7 +41,17 @@ export default {
     Swiper,
     Cates,
     AdBanner,
-    Seckill
+    Seckill,
+    CateAd
+  },
+  computed: {
+    ...mapState(['cateAdData'])
+  },
+  mounted() {
+    this.getCateAdData()
+  },
+  methods: {
+    ...mapActions(['getCateAdData'])
   }
 }
 </script>

@@ -27,6 +27,8 @@ export default {
   left: 0;
   right: 0;
   color: white;
+  z-index: 9999;
+  background: rgba(142, 74, 1, 1);
   // background: rgba(228, 49, 48, 1);
   > i {
     float: left;

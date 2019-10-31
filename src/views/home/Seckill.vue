@@ -10,16 +10,9 @@
   </div>
   <div class="bottom">
     <div class="bottom_list">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
+      <div v-for="(item, idx) in skillArr" :key='idx'>
+        <SeckillGood></SeckillGood>
+      </div>
     </div>
 
   </div>
@@ -28,11 +21,25 @@
 
 <script>
 import { icons } from '@/assets'
+import SeckillGood from './SeckillGood.vue'
+import { mapActions, mapState } from 'vuex'
 export default {
   data: function() {
     return {
       icons
     }
+  },
+  computed: {
+    ...mapState(['skillArr'])
+  },
+  components: {
+    SeckillGood
+  },
+  mounted() {
+    this.getKillGoods()
+  },
+  methods: {
+    ...mapActions(['getKillGoods'])
   }
 }
 </script>
@@ -91,13 +98,12 @@ export default {
     height: 3.2rem;
     overflow: scroll;
     .bottom_list {
-      width: 20rem;
+      width: 22rem;
       height: 100%;
       >div {
         display: inline-block;
         width: 2rem;
         height: 100%;
-        border: 1px solid red;
         box-sizing: border-box;
       }
     }
