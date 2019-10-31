@@ -27,7 +27,8 @@ const store = new Vuex.Store({
   state: {
     msg: 'hello',
     skillArr: [],
-    adArr: []
+    adArr: [],
+    rcmdArr: []
   },
   mutations: {
     updateSkillArr(state, payload) {
@@ -35,6 +36,9 @@ const store = new Vuex.Store({
     },
     updateAdArr(state, payload) {
       state.adArr = payload
+    },
+    updateRcmdArr(state, payload) {
+      state.rcmdArr = [...state.rcmdArr, ...payload]
     }
   },
   actions: {
@@ -48,6 +52,13 @@ const store = new Vuex.Store({
       fetch('/db/ads.json', data=>{
         console.log(data)
         store.commit('updateAdArr', data)
+      })
+    },
+    getRcmds(store, callback) {
+      fetch('/db/rcmd.json', data=>{
+        console.log(data)
+        store.commit('updateRcmdArr', data)
+        callback && callback()
       })
     }
   }

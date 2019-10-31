@@ -1,7 +1,9 @@
 import skillIcon from './icons/skill.png'
+import rcmdIcon from './icons/rcmd.png'
 
 export const icons = {
-  skillIcon
+  skillIcon,
+  rcmdIcon
 }
 
 // 底部导航的图片资源

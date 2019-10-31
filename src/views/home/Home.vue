@@ -12,6 +12,7 @@
   </div>
 
   <div class="content">
+
     <!-- 分类组件 -->
     <Cates></Cates>
     <!-- 广告位组件 -->
@@ -22,7 +23,19 @@
     <div class="ad_store_wrap">
       <AdStore v-for="(item, idx) in adArr" :key='idx' :item='item'></AdStore>
     </div>
+
+
+      <div class="rcmd_wrap" ref='rcmd'>
+        <div class="rcmd_wrap_title">
+          <img :src="icons.rcmdIcon" alt="">
+        </div>
+        <Rcmd v-for="(item,idx) in rcmdArr" :key='idx' :item='item'></Rcmd>
+      </div>
+
+
   </div>
+
+
 
 </div>
 </template>
@@ -35,9 +48,20 @@ import Cates from './Cates.vue'
 import Banner from './Banner.vue'
 import Skill from './Skill.vue'
 import AdStore from './AdStore.vue'
+import Rcmd from './Rcmd.vue'
+
+// import Scroll from 'vue-slim-better-scroll'
+// import BScroll from 'better-scroll'
+import BScroll from '@better-scroll/core'
 
 import { mapActions, mapState } from 'vuex'
+import { icons } from '@/assets/index'
 export default {
+  data: function() {
+    return {
+      icons
+    }
+  },
   components: {
     SearchBar,  // 顶部搜索框组件
     NavBar,     // 底部导航组件
@@ -46,16 +70,32 @@ export default {
     Banner,     // 广告位组件
     Skill,      // 秒杀组件
     AdStore,    // 京东小院组件
+    Rcmd
   },
   computed: {
-    ...mapState(['adArr'])
+    ...mapState(['adArr', 'rcmdArr'])
   },
   mounted() {
     this.getAds()
+    this.getRcmds()
+    let bs = new BScroll('.rcmd_wrap', {
+      probeType: 3,
+      pullUpLoad: true
+    })
+    bs.on('scroll', ()=>{
+      console.log(1)
+    })
+    bs.on('scrollEnd', ()=>{
+      console.log('end')
+      this.getRcmds()
+      setTimeout(()=>{
+        bs.refresh()
+      },1000)
+    })
   },
 
   methods: {
-    ...mapActions(['getAds'])
+    ...mapActions(['getAds', 'getRcmds'])
   }
 }
 </script>
@@ -76,6 +116,19 @@ export default {
     .ad_store_wrap {
       padding: 0 0.31rem;
       margin-top: .29rem;
+    }
+    .rcmd_wrap {
+      text-align: center;
+      .rcmd_wrap_title {
+        height: .93rem;
+        line-height: .93rem;
+        text-align: center;
+        .img {
+          display: block;
+          width: 100%;
+          height: 100%;
+        }
+      }
     }
   }
 }
