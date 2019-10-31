@@ -1,5 +1,7 @@
-<template>
+<template lang="html">
 <div>
+  分类
+
   <NavBar></NavBar>
 </div>
 </template>
@@ -13,6 +15,5 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="css" scoped>
 </style>

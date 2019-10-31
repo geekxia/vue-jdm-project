@@ -1,13 +1,17 @@
 <template>
 <div class="search_bar">
+
   <i class="fa fa-navicon"></i>
+
   <div class="input">
     <span class="jd">JD</span>
     <span class="line"></span>
     <i class="fa fa-search"></i>
     <input type="text" placeholder="电脑主机">
   </div>
+
   <span>登录</span>
+
 </div>
 </template>
 
@@ -27,9 +31,9 @@ export default {
   left: 0;
   right: 0;
   color: white;
-  z-index: 9999;
-  background: rgba(142, 74, 1, 1);
   // background: rgba(228, 49, 48, 1);
+  background: rgba(142, 74, 1, 1);
+  z-index: 99999;
   > i {
     float: left;
     font-size: .48rem;

@@ -5,15 +5,15 @@
       <div class="cates_item">
         <div v-for="(item, idx) in cateArr1" :key='idx'>
           <img :src="item.src" alt="cate">
-          <span v-text='item.cate'></span>
+          <span v-text="item.cate"></span>
         </div>
       </div>
     </mt-swipe-item>
 
     <mt-swipe-item>
       <div class="cates_item">
-        <div v-for="(item, idx) in cateArr2" :key='idx'>
-          <img :src="item.src" alt="cate">
+        <div v-for="(item,idx) in cateArr2" :key='idx'>
+          <img :src='item.src' alt="cate">
           <span v-text='item.cate'></span>
         </div>
       </div>
@@ -33,7 +33,7 @@ export default {
   },
   computed: {
     cateArr1() {
-      return this.cates.slice(0,10)
+      return this.cates.slice(0, 10)
     },
     cateArr2() {
       return this.cates.slice(10)

@@ -1,7 +1,9 @@
-<template>
-<div>
-  <NavBar></NavBar>
-</div>
+<template lang="html">
+  <div>
+    购物车
+
+    <NavBar></NavBar>
+  </div>
 </template>
 
 <script>
@@ -13,6 +15,5 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="css" scoped>
 </style>

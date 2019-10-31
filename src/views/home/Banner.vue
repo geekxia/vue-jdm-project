@@ -1,13 +1,14 @@
 <template>
 <div class="banner">
-  <img :src="ads.ad1" alt="ad">
-  <img :src="ads.ad2" alt="ad">
-  <img :src="ads.ad3" alt="ad">
+  <img :src='ads.ad1' alt="ad">
+  <img :src='ads.ad2' alt="ad">
+  <img :src='ads.ad3' alt="ad">
 </div>
 </template>
 
 <script>
-import { ads } from '@/assets'
+
+import { ads } from '@/assets/index'
 export default {
   data: function() {
     return {

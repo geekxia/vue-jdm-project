@@ -1,21 +1,21 @@
-<template>
+<template lang="html">
   <div class="navbar">
-    <router-link to='/home'>
-      <div><img :src="img.icon1" alt=""></div>
-    </router-link>
-    <router-link to='/cate'>
-      <div><img :src="img.icon2" alt=""></div>
-    </router-link>
-    <router-link to='/jdm'>
-      <div><img :src="img.icon3" alt=""></div>
-    </router-link>
-    <router-link to='/cart'>
-      <div><img :src="img.icon4" alt=""></div>
-    </router-link>
-    <router-link to='/user'>
-      <div><img :src="img.icon5" alt=""></div>
-    </router-link>
-  </div>
+      <router-link to='/home'>
+        <div><img :src="img.icon1" alt=""></div>
+      </router-link>
+      <router-link to='/cate'>
+        <div><img :src="img.icon2" alt=""></div>
+      </router-link>
+      <router-link to='/jdm'>
+        <div><img :src="img.icon3" alt=""></div>
+      </router-link>
+      <router-link to='/cart'>
+        <div><img :src="img.icon4" alt=""></div>
+      </router-link>
+      <router-link to='/user'>
+        <div><img :src="img.icon5" alt=""></div>
+      </router-link>
+    </div>
 </template>
 
 <script>

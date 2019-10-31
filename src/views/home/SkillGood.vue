@@ -1,15 +1,16 @@
 <template lang="html">
 <div class="scroll_good">
   <div>
-    <img src="" alt="">
+    <img :src='item.src' alt="">
   </div>
-  <div>121</div>
-  <div>22</div>
+  <div v-text='item.current_price'></div>
+  <div v-text='item.original_price'></div>
 </div>
 </template>
 
 <script>
 export default {
+  props: ['item']
 }
 </script>
 
@@ -30,6 +31,7 @@ export default {
   >div:nth-child(2) {
     font-size: .43rem;
     color: #e93b3d;
+    font-weight: bold;
   }
   >div:nth-child(3) {
     font-size: .32rem;

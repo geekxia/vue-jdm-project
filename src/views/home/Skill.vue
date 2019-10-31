@@ -11,7 +11,7 @@
   <div class="bottom">
     <div class="bottom_list">
       <div v-for="(item, idx) in skillArr" :key='idx'>
-        <SeckillGood></SeckillGood>
+        <SkillGood :item='item'></SkillGood>
       </div>
     </div>
 
@@ -20,26 +20,26 @@
 </template>
 
 <script>
-import { icons } from '@/assets'
-import SeckillGood from './SeckillGood.vue'
-import { mapActions, mapState } from 'vuex'
+import { icons } from '@/assets/index'
+import { mapState, mapActions } from 'vuex'
+import SkillGood from './SkillGood.vue'
 export default {
   data: function() {
     return {
       icons
     }
   },
+  components: {
+    SkillGood     // 单个商品组件
+  },
   computed: {
     ...mapState(['skillArr'])
   },
-  components: {
-    SeckillGood
-  },
   mounted() {
-    this.getKillGoods()
+    this.getSkillGoods()
   },
   methods: {
-    ...mapActions(['getKillGoods'])
+    ...mapActions(['getSkillGoods'])
   }
 }
 </script>
@@ -105,9 +105,9 @@ export default {
         width: 2rem;
         height: 100%;
         box-sizing: border-box;
+        text-align: center;
       }
     }
-
   }
 }
 </style>

@@ -1,6 +1,7 @@
 <template lang="html">
-<div class="cate_ad" v-if='item.list'>
-  <div class="cate_ad_top_a" v-if="type==1">
+<div class="cate_ad">
+
+  <div class="cate_ad_top_a" v-if="item.type === 1">
     <div v-text='item.list[0].title'>萌宝日记</div>
     <div v-text='item.list[0].desc'>吾家有宝初成长</div>
   </div>
@@ -14,12 +15,13 @@
       <div v-text='item.list[1].desc'>高颜值好货</div>
     </div>
   </div>
+
   <div class="cate_ad_bottom">
     <div>
-      <img src="../../assets/test.png" alt="">
+      <img :src="item.list[0].src" alt="">
     </div>
     <div>
-      <img src="../../assets/test.png" alt="">
+      <img :src="item.list[1].src" alt="">
     </div>
   </div>
 </div>
@@ -27,9 +29,10 @@
 
 <script>
 export default {
-  props: ['type', 'item'],
+  // props: ['type', 'item'],
+  props: ['item'],
   mounted() {
-    console.log(this)
+    // console.log(this)
   }
 }
 </script>

@@ -1,19 +1,24 @@
 import skillIcon from './icons/skill.png'
+
 export const icons = {
   skillIcon
 }
 
+// 底部导航的图片资源
 export const navicons = {
   icon1: 'https://img11.360buyimg.com/jdphoto/s130x100_jfs/t1/81741/30/12345/4140/5d9c4b13E726f0a1e/82c582e7c375e4b3.png',
   icon2: 'https://img11.360buyimg.com/jdphoto/s130x100_jfs/t1/56507/6/12787/3168/5d9c4b12Ef363dd8d/4af32f42575509d8.png',
   icon3: 'https://img11.360buyimg.com/jdphoto/s130x100_jfs/t1/70651/38/12417/3194/5d9d3eafE12cde68b/2467c20113c50451.png',
   icon4: 'https://img11.360buyimg.com/jdphoto/s130x100_jfs/t1/64954/4/12406/3529/5d9c4b12Ee7a82735/f2fe0a88bf344736.png',
   icon5: 'https://img11.360buyimg.com/jdphoto/s130x100_jfs/t1/68400/36/12368/3153/5d9c4b13E0e0d80a8/876c40f17d91ce44.png',
+
   icon1on: 'https://img11.360buyimg.com/jdphoto/s130x100_jfs/t1/67550/26/12426/5094/5d9c4b13Eea435a3f/81328b0609c60a3c.png',
   icon2on: 'https://img11.360buyimg.com/jdphoto/s130x100_jfs/t1/48787/24/12910/3390/5d9c4b12Ee63270e4/4481f5b3dbad979d.png',
   icon5on: 'https://img11.360buyimg.com/jdphoto/s130x100_jfs/t1/47480/36/12929/3209/5d9c4b13E97caa63a/4dc0ec8a7e47c2b7.png'
 }
 
+
+// 轮播图的图片资源
 export const swiper = [
   {src: 'https://m.360buyimg.com/mobilecms/s700x280_jfs/t1/99655/28/145/145475/5da83835Ec47a95cb/3858b36f729e4771.jpg!cr_1125x445_0_171!q70.jpg.dpg'},
   {src: 'https://m.360buyimg.com/mobilecms/s700x280_jfs/t1/60222/25/13344/94695/5da808cbEc44b88da/95ce09446e4044ff.jpg!cr_1125x445_0_171!q70.jpg.dpg'},
@@ -42,6 +47,7 @@ export const cates = [
   {cate: '物流查询', src: '//m.360buyimg.com/mobilecms/s120x120_jfs/t5842/205/151189300/13247/a6de2d/591d94edNc42fb94d.png'},
   {cate: '全部', src: '//m.360buyimg.com/mobilecms/s120x120_jfs/t1/28873/5/1455/6885/5c120bb9Eb6610bee/29d349f92aeb6eaf.png'}
 ]
+
 
 export const ads = {
   ad1: '//m.360buyimg.com/mobilecms/s250x200_jfs/t1/104523/25/1060/38777/5db916ffEf9b24ed6/5afb92d7d9731427.jpg!q70.jpg.dpg',
