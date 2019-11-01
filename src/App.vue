@@ -19,6 +19,7 @@ export default {
 html, body {
   padding: 0;
   margin: 0;
+  background: rgba(247, 247, 247, 1);
 }
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;

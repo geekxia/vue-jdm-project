@@ -62,7 +62,7 @@ export default {
     Banner,     // 广告位组件
     Skill,      // 秒杀组件
     AdStore,    // 京东小院组件
-    Rcmd
+    Rcmd        // 推荐商品组件
   },
   computed: {
     ...mapState(['adArr', 'rcmdArr'])
@@ -75,9 +75,8 @@ export default {
     if (this.adArr.length === 0) {
       this.getAds()
     }
-
-
-    let bs = new BScroll('.home', {
+    // 实现滚动加载功能
+    let bs = new BScroll('.rcmd_wrap', {
       probeType: 3,
       pullUpLoad: true
     })

@@ -26,34 +26,70 @@ function fetch(api, callback) {
 const store = new Vuex.Store({
   state: {
     msg: 'hello',
+    userinfo: {
+      name: 'geekxia',
+      mobile: '13200000000'
+    },
     skillArr: [],
     adArr: [],
-    rcmdArr: []
+    rcmdArr: [],
+    orderArr: []
   },
   mutations: {
+    // 秒杀商品列表
     updateSkillArr(state, payload) {
       state.skillArr = payload
     },
+    // 京东小院商品列表
     updateAdArr(state, payload) {
       state.adArr = payload
     },
+    // 推荐商品列表
     updateRcmdArr(state, payload) {
       state.rcmdArr = [...state.rcmdArr, ...payload]
+    },
+    // 购物车列表
+    updateOrderArr(state, payload) {
+      // console.log(state, payload)
+      switch (payload.type) {
+        case 'delete':
+          // 删除一个订单
+          state.orderArr.map((ele,idx)=>{
+            // 用时间戳来判断商品的唯一性
+            if(ele.t == payload.item.t) {
+              state.orderArr.splice(idx, 1)
+              return
+            }
+          })
+          break;
+        case 'deleteAll':
+          // 提交购物
+          state.orderArr = []
+          break;
+        case 'insert':
+          // 添加商品
+          state.orderArr.push(payload.item)
+          break;
+        default:
+      }
     }
   },
   actions: {
+    // 获取秒杀商品列表
     getSkillGoods(store) {
       fetch('/db/goods.json', data=>{
         // console.log(data)
         store.commit('updateSkillArr', data)
       })
     },
+    // 获取京东小院中的商品列表
     getAds(store) {
       fetch('/db/ads.json', data=>{
         // console.log(data)
         store.commit('updateAdArr', data)
       })
     },
+    // 获取推荐商品列表，可实现分页功能
     getRcmd(store, page) {
       fetch('/db/rcmd.json', (data)=>{
         // console.log(data)

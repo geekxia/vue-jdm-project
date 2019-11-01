@@ -1,5 +1,5 @@
 <template lang="html">
-<div class="scroll_good">
+<div class="scroll_good" @click="buy">
   <div>
     <img :src='item.src' alt="">
   </div>
@@ -9,8 +9,27 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 export default {
-  props: ['item']
+  props: ['item'],
+  methods: {
+    ...mapMutations(['updateOrderArr']),
+    // 购买商品
+    buy() {      
+      this.$messagebox.confirm('你确定要购买吗？').then(action=>{
+        if (action === 'confirm') {
+          // 构造一个商品item
+          // 使用时间戳来指定商品的唯一性
+          let item = {
+            ...this.item,
+            t: Date.now()
+          }
+          console.log(item)
+          this.updateOrderArr({type:"insert", item: item})
+        }
+      })
+    }
+  }
 }
 </script>
 

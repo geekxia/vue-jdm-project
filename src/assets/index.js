@@ -1,9 +1,12 @@
 import skillIcon from './icons/skill.png'
 import rcmdIcon from './icons/rcmd.png'
+import noDataIcon from './icons/nodata.png'
 
 export const icons = {
   skillIcon,
-  rcmdIcon
+  rcmdIcon,
+  noDataIcon,
+  noLoginIcon: '//img11.360buyimg.com/jdphoto/s180x180_jfs/t18163/292/540553659/74408/adeb7463/5a93c51cN3bb5e37b.png'
 }
 
 // 底部导航的图片资源
