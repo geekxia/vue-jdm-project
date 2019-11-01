@@ -1,6 +1,6 @@
 <template>
 <div class="rcmd">
-  <div><img :src="item.src" alt=""></div>
+  <div><img :src="item.src" alt="1912"></div>
   <div v-text='item.desc'></div>
   <div>
     <span v-text='item.current_price'></span>

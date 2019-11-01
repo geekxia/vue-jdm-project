@@ -36,7 +36,10 @@ export default {
     ...mapState(['skillArr'])
   },
   mounted() {
-    this.getSkillGoods()
+    // 实现缓存
+    if (this.skillArr.length === 0) {
+      this.getSkillGoods()
+    }
   },
   methods: {
     ...mapActions(['getSkillGoods'])

@@ -4,7 +4,7 @@
   <!-- 顶部搜索框组件 -->
   <SearchBar></SearchBar>
   <!-- 底部导航组件 -->
-  <NavBar></NavBar>
+  <NavBar index='0'></NavBar>
 
   <!-- 轮播图组件 -->
   <div class="swiper_box">
@@ -12,7 +12,6 @@
   </div>
 
   <div class="content">
-
     <!-- 分类组件 -->
     <Cates></Cates>
     <!-- 广告位组件 -->
@@ -23,19 +22,14 @@
     <div class="ad_store_wrap">
       <AdStore v-for="(item, idx) in adArr" :key='idx' :item='item'></AdStore>
     </div>
-
-
-      <div class="rcmd_wrap" ref='rcmd'>
-        <div class="rcmd_wrap_title">
-          <img :src="icons.rcmdIcon" alt="">
-        </div>
-        <Rcmd v-for="(item,idx) in rcmdArr" :key='idx' :item='item'></Rcmd>
+    <!-- 为你推荐 -->
+    <div class="rcmd_wrap">
+      <div class="rcmd_wrap_title">
+        <img :src="icons.rcmdIcon" alt="1">
       </div>
-
-
+      <Rcmd v-for='(item, idx) in rcmdArr' :key='idx' :item='item'></Rcmd>
+    </div>
   </div>
-
-
 
 </div>
 </template>
@@ -50,16 +44,14 @@ import Skill from './Skill.vue'
 import AdStore from './AdStore.vue'
 import Rcmd from './Rcmd.vue'
 
-// import Scroll from 'vue-slim-better-scroll'
-// import BScroll from 'better-scroll'
-import BScroll from '@better-scroll/core'
-
 import { mapActions, mapState } from 'vuex'
 import { icons } from '@/assets/index'
+import BScroll from '@better-scroll/core'
 export default {
   data: function() {
     return {
-      icons
+      icons,
+      page: 1
     }
   },
   components: {
@@ -76,26 +68,39 @@ export default {
     ...mapState(['adArr', 'rcmdArr'])
   },
   mounted() {
-    this.getAds()
-    this.getRcmds()
-    let bs = new BScroll('.rcmd_wrap', {
+    // 实现数据缓存
+    if (this.rcmdArr.length === 0) {
+      this.getRcmd(this.page)
+    }
+    if (this.adArr.length === 0) {
+      this.getAds()
+    }
+
+
+    let bs = new BScroll('.home', {
       probeType: 3,
       pullUpLoad: true
     })
     bs.on('scroll', ()=>{
-      console.log(1)
+      console.log('scroll')
     })
     bs.on('scrollEnd', ()=>{
-      console.log('end')
-      this.getRcmds()
-      setTimeout(()=>{
+      console.log('scroll end')
+      this.page++
+      this.getRcmd(this.page)
+      this.timer = setTimeout(()=>{
         bs.refresh()
       },1000)
     })
   },
 
   methods: {
-    ...mapActions(['getAds', 'getRcmds'])
+    ...mapActions(['getAds', 'getRcmd'])
+  },
+  destoryed() {
+    // 清除定时器
+    this.timer = null
+    clearTimeout(this.timer)
   }
 }
 </script>

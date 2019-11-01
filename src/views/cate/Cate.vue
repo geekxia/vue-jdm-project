@@ -2,7 +2,7 @@
 <div>
   分类
 
-  <NavBar></NavBar>
+  <NavBar index='1'></NavBar>
 </div>
 </template>
 

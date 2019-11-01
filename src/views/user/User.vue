@@ -2,7 +2,7 @@
   <div>
     用户
 
-    <NavBar></NavBar>
+    <NavBar index='4'></NavBar>
   </div>
 </template>
 

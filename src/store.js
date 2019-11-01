@@ -8,7 +8,7 @@ function fetch(api, callback) {
   // 显示加载中
   axios({
     method: "GET",
-    url: 'http://localhost:8080'+api
+    url: 'http://localhost:8080'+api,
   }).then(res=>{
     let data = null
     if (res.data.err === 0) {
@@ -44,21 +44,21 @@ const store = new Vuex.Store({
   actions: {
     getSkillGoods(store) {
       fetch('/db/goods.json', data=>{
-        console.log(data)
+        // console.log(data)
         store.commit('updateSkillArr', data)
       })
     },
     getAds(store) {
       fetch('/db/ads.json', data=>{
-        console.log(data)
+        // console.log(data)
         store.commit('updateAdArr', data)
       })
     },
-    getRcmds(store, callback) {
-      fetch('/db/rcmd.json', data=>{
-        console.log(data)
+    getRcmd(store, page) {
+      fetch('/db/rcmd.json', (data)=>{
+        // console.log(data)
+        console.log('当前页', page)
         store.commit('updateRcmdArr', data)
-        callback && callback()
       })
     }
   }
