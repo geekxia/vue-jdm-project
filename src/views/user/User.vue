@@ -1,16 +1,17 @@
 <template lang="html">
   <div>
-    用户
-
     <NavBar index='4'></NavBar>
+    <Login></Login>
   </div>
 </template>
 
 <script>
 import NavBar from '@/components/NavBar.vue'
+import Login from './Login.vue'
 export default {
   components: {
-    NavBar
+    NavBar,
+    Login
   }
 }
 </script>

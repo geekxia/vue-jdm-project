@@ -1,16 +1,21 @@
 <template lang="html">
 <div>
-  分类
-
   <NavBar index='1'></NavBar>
+
+  <CateList></CateList>
+  <CateGroup></CateGroup>
 </div>
 </template>
 
 <script>
 import NavBar from '@/components/NavBar.vue'
+import CateList from './CateList.vue'
+import CateGroup from './CateGroup.vue'
 export default {
   components: {
-    NavBar
+    NavBar,
+    CateList,
+    CateGroup
   }
 }
 </script>
