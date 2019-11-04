@@ -3,8 +3,8 @@
   <div>
     <img :src='item.src' alt="">
   </div>
-  <div v-text='item.current_price'></div>
-  <div v-text='item.original_price'></div>
+  <div>{{item.current_price | currency}}</div>
+  <div>{{item.original_price | currency}}</div>
 </div>
 </template>
 
@@ -15,7 +15,7 @@ export default {
   methods: {
     ...mapMutations(['updateOrderArr']),
     // 购买商品
-    buy() {      
+    buy() {
       this.$messagebox.confirm('你确定要购买吗？').then(action=>{
         if (action === 'confirm') {
           // 构造一个商品item

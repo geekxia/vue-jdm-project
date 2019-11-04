@@ -11,6 +11,7 @@
 import NavBar from '@/components/NavBar.vue'
 import CateList from './CateList.vue'
 import CateGroup from './CateGroup.vue'
+
 export default {
   components: {
     NavBar,

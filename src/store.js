@@ -4,11 +4,18 @@ import axios from 'axios'
 
 Vue.use(Vuex)
 
+import constant from '@/utils/constant'
+
 function fetch(api, callback) {
+  let res = localStorage.getItem('login')
+
   // 显示加载中
   axios({
     method: "GET",
-    url: 'http://localhost:8080'+api,
+    url: constant.baseUrl+api,
+    headers: {
+      token: JSON.parse(res).token  // token传递给后端
+    }
   }).then(res=>{
     let data = null
     if (res.data.err === 0) {
@@ -27,13 +34,15 @@ const store = new Vuex.Store({
   state: {
     msg: 'hello',
     userinfo: {
-      name: 'geekxia',
-      mobile: '13200000000'
+      name: '',
+      mobile: ''
     },
     skillArr: [],
     adArr: [],
     rcmdArr: [],
-    orderArr: []
+    orderArr: [],
+    cateArr: [],  // 所有品类数据
+    curCateGroup: {},   // 用于CateGroup中数据显示
   },
   mutations: {
     // 秒杀商品列表
@@ -72,6 +81,16 @@ const store = new Vuex.Store({
           break;
         default:
       }
+    },
+    // 品类页面中的所有数据
+    updateCateArr(state, payload) {
+      state.cateArr = payload
+      // CateGroup组件中的初始化数据
+      state.curCateGroup = payload[0]
+    },
+    // 更新CateGroup组件中所需要的数据
+    updateCurCateGroup(state, payload) {
+      state.curCateGroup = state.cateArr[payload]
     }
   },
   actions: {
@@ -95,6 +114,13 @@ const store = new Vuex.Store({
         // console.log(data)
         console.log('当前页', page)
         store.commit('updateRcmdArr', data)
+      })
+    },
+    // 获取品类页面的数据
+    getCates(store) {
+      fetch('/db/cates.json', (data)=>{
+        console.log(data)
+        store.commit('updateCateArr', data)
       })
     }
   }

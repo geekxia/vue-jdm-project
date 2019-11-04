@@ -1,14 +1,38 @@
 <template>
 <div class="cate_list">
-  <div class="cate_item" v-for='item in 100' :key='item'>
-    <span>图书音像</span>
+  <div v-for="(item,index) in cateArr" :key='index' class="cate_item" :class="{'on': index == idx}" @touchstart="tap(index)">
+    <span v-text='item.cate'></span>
   </div>
 </div>
 </template>
 
 <script>
-export default {
+import { mapState, mapActions, mapMutations } from 'vuex'
 
+export default {
+  data: function() {
+    return {
+      idx: 0   // 当前索引号
+    }
+  },
+  computed: {
+    ...mapState(['cateArr'])
+  },
+  mounted() {
+    this.getCates()
+  },
+  methods: {
+    ...mapActions(['getCates']),
+    ...mapMutations(['updateCurCateGroup']),
+    // 一级品类项的点击事件, index代表一级品类的索引号
+    tap(index) {
+      console.log(index)
+      // 更新一级品类列表的点亮样式
+      this.idx = index
+      // 更新CateGroup组件中所需要的数据
+      this.updateCurCateGroup(index)
+    }
+  }
 }
 </script>
 

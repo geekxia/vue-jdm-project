@@ -2,7 +2,7 @@
 <div class="no_login">
   <div class="no_login_top">
     <span>登录后可同步账户购物车中的商品</span>
-    <span>登录</span>
+    <span @touchstart='skipToLogin'>登录</span>
   </div>
   <div class="no_login_bottom">
     <img :src="icons.noLoginIcon" alt="">
@@ -17,6 +17,12 @@ export default {
   data: function() {
     return {
       icons
+    }
+  },
+  methods: {
+    // 跳转至登录页
+    skipToLogin() {
+      this.$router.push('/login')
     }
   }
 }

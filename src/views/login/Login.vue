@@ -6,31 +6,39 @@
   <div class="ul_password">
     <input type="text" name="" value="" placeholder="请输入密码">
   </div>
-  <div class="ul_login_btn ul_login_btn1">登录</div>
+  <div class="ul_login_btn ul_login_btn1" @touchstart='login'>登录</div>
   <div class="ul_login_btn ul_login_btn2">一键登录</div>
   <div class="ul_login_more">
     <span>短信验证码登录</span>
     <span>手机快速注册</span>
   </div>
-  <!-- <div class="ul_login_other">
-    <div>其它登录方式</div>
-    <div class="ul_login_tencent">
-      <div>
-        <img src="../../assets/test.png" alt="">
-        <span>QQ</span>
-      </div>
-      <div>
-        <img src="../../assets/test.png" alt="">
-        <span>微信</span>
-      </div>
-    </div>
-    <div class="ul_login_tip">登录即代表您已同意<span>京东隐私政策</span></div>
-  </div> -->
 </div>
 </template>
 
 <script>
+// import { mapMutations } from 'vuex'
 export default {
+  methods: {
+    // 登录
+    login() {
+      // 获取用户名、密码
+      // 数据验证
+      // 提交接口
+      // res代表登录成功后，后端返回的数据信息，其中包括token和其它用户数据
+      let res = {
+        token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c',
+        isLogin: 1
+      }
+      localStorage.setItem('login', JSON.stringify(res))
+      this.$toast({
+        message: '登录成功',
+        duration: 2000
+      })
+      setTimeout(()=>{
+        this.$router.replace('/home')
+      }, 2000)
+    }
+  }
 }
 </script>
 

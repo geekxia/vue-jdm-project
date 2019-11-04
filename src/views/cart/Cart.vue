@@ -1,6 +1,6 @@
-<template lang="html">
+<template>
   <div class="cart">
-    <div v-if="userinfo.mobile">
+    <div v-if="isLogin">
       <div v-if="orderArr.length > 0">
         <OrderItem v-for="(item, idx) in orderArr" :key='idx' :item='item'></OrderItem>
       </div>
@@ -9,23 +9,22 @@
         <span>购物车暂无商品</span>
       </div>
 
+      <div class="cart_submit">
+        <div>
+          <span>共计：</span>
+          <span class="cart_submit_red" v-text='orderArr.length'></span>
+        </div>
+        <div>
+          <span>总价：</span>
+          <span class="cart_submit_red" v-text='total'></span>
+        </div>
+        <div @touchstart='submit'>提交</div>
+      </div>
+
     </div>
     <div v-else>
       <NoLogin></NoLogin>
     </div>
-
-    <div class="cart_submit">
-      <div>
-        <span>共计：</span>
-        <span class="cart_submit_red" v-text='orderArr.length'></span>
-      </div>
-      <div>
-        <span>总价：</span>
-        <span class="cart_submit_red" v-text='total'></span>
-      </div>
-      <div @touchstart='submit'>提交</div>
-    </div>
-
 
     <NavBar></NavBar>
   </div>
@@ -49,7 +48,7 @@ export default {
     OrderItem
   },
   computed: {
-    ...mapState(['userinfo', 'orderArr']),
+    ...mapState(['orderArr']),
     // 计算总价格
     total() {
       let t = 0
@@ -57,6 +56,11 @@ export default {
         t += ele.current_price
       })
       return t
+    },
+    // 判断用户是否登录了
+    isLogin() {
+      let res = localStorage.getItem('login')
+      return res && (JSON.parse(res).isLogin === 1)
     }
   },
   methods: {

@@ -2,6 +2,15 @@
 
 created at 2019-10-31 by 1912
 
+NodeJs + Webpack + Babel + ESLint
+Vue + Vue-Router
+ES6模块化语法
+Vuex + axios + devServer代理
+MintUI、Sass、Font-awesome、REM等比缩放布局、meta标签
+BestScroll
+
+
+
 ## Project setup
 ```
 npm install
@@ -29,3 +38,9 @@ npm install node-sass --sass_binary_site=https://npm.taobao.org/mirrors/node-sas
 * [Better-Scroll](https://better-scroll.github.io/docs/zh-CN/guide/how-to-install.html#npm)
 * 安装2.x版本：`npm install @better-scroll/core@next -S`
 * 注意区分版本
+
+#### 4、Windows上如何使用命令行杀死指定端口？
+```
+netstat -ano | findstr '端口号'
+taskkill -f -pid '该端口号对应的pid'
+```

@@ -1,13 +1,16 @@
 <template>
 <div class="cate_group">
+
   <!-- 一层循环 -->
-  <div class="cate_panel" v-for="item in [1,2,3]" :key='item'>
-    <div class="cate_panel_title">文学</div>
+  <div class="cate_panel" v-for="(item,index) in curCateGroup.list" :key='index'>
+    <div class="cate_panel_title" v-text='item.title'>文学</div>
     <div class="cate_panel_list">
+
       <!-- 二层循环 -->
-      <div class="cate_panel_item" v-for="item in [1,2,3,4,5,6, 7]" :key="item">
-        <img src="../../assets/test.png" alt="">
-        <span>小说</span>
+      <!-- 这里的 item是外层循环中的item -->
+      <div class="cate_panel_item" v-for="(item2, index2) in item.list" :key='index2'>
+        <img :src="item2.img" alt="">
+        <span v-text='item2.name'></span>
       </div>
     </div>
   </div>
@@ -15,7 +18,11 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
+  computed: {
+    ...mapState(['curCateGroup'])
+  }
 }
 </script>
 

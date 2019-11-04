@@ -9,6 +9,13 @@ Vue.use(MintUI)
 
 Vue.config.productionTip = false
 
+
+// 全局过滤器
+Vue.filter('currency', function(value) {
+  if (!value) return
+  return "￥" + value
+})
+
 new Vue({
   router,
   store,

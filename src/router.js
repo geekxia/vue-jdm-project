@@ -8,6 +8,7 @@ import Cate from '@/views/cate/Cate.vue'
 import Jdm from '@/views/jdm/Jdm.vue'
 import Cart from '@/views/cart/Cart.vue'
 import User from '@/views/user/User.vue'
+import Login from '@/views/login/Login.vue'
 
 const router = new VueRouter({
   routes: [
@@ -35,6 +36,10 @@ const router = new VueRouter({
       path: '/user',
       component: User
     },
+    {
+      path: '/login',
+      component: Login
+    }
   ]
 })
 

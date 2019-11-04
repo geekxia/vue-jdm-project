@@ -47,6 +47,7 @@ import Rcmd from './Rcmd.vue'
 import { mapActions, mapState } from 'vuex'
 import { icons } from '@/assets/index'
 import BScroll from '@better-scroll/core'
+import Pullup from '@better-scroll/pull-up'
 export default {
   data: function() {
     return {
@@ -76,20 +77,29 @@ export default {
       this.getAds()
     }
     // 实现滚动加载功能
+    BScroll.use(Pullup)
+    // let wrapper = document.querySelector('.rcmd_wrap')
     let bs = new BScroll('.rcmd_wrap', {
-      probeType: 3,
-      pullUpLoad: true
+      // probeType: 3,
+      // pullUpLoad: true,
+      // scrollY: true,
+      pullUpLoad: true,
+      threshold: -60,
+      click: true,
+      tap: true
     })
-    bs.on('scroll', ()=>{
-      console.log('scroll')
-    })
-    bs.on('scrollEnd', ()=>{
-      console.log('scroll end')
+    bs.on('pullingUp', ()=>{
+      console.log('up')
+      alert('up')
+      // console.log('scroll end')
       this.page++
-      this.getRcmd(this.page)
+      // this.getRcmd(this.page)
       this.timer = setTimeout(()=>{
         bs.refresh()
       },1000)
+    })
+    bs.on('scrollEnd', ()=>{
+
     })
   },
 
